@@ -38,6 +38,11 @@ También hay línea de comandos:
 - MSX2 y superiores: paleta propia y barra de selección animada (cambio de paleta).
   Antes de lanzar el juego se restaura la paleta estándar.
 - En turbo R se pasa a modo Z80 antes de lanzar el juego.
+- Si una ROM para Yamanooto se abre sin ese mapper (openMSX la detecta sola como
+  KonamiSCC si no se le indica el tipo), el menú muestra **FALTA EL MAPPER YAMANOOTO**
+  y no lanza los juegos, que no arrancarían. En openMSX hay que cargarla con
+  `-romtype Yamanooto` (o elegir ese tipo en el launcher); **Probar en openMSX** ya lo hace.
+  Las ROMs para el RBSC se cargan con `-romtype KonamiSCC`.
 - Hasta varios miles de juegos (170 por banco de tabla).
 
 ## Cartuchos

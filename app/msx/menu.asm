@@ -92,6 +92,7 @@ v_bd        equ VARS+18
 v_ctype     equ VARS+19
 v_colptr    equ VARS+20
 v_frame     equ VARS+23
+v_noyama    equ VARS+24     ; <>0: la ROM es para Yamanooto pero no lo hay
 v_entry     equ VARS+64     ; 16 bytes
 v_line      equ VARS+96     ; 32 bytes
 TRAMP       equ 0E100h
@@ -117,6 +118,8 @@ cfg_title:      db "          MSX MULTIROM          "
 ;-------------------------------------------------------------------------------
 start:
         ld (v_sp), sp
+        xor a
+        ld (v_noyama), a
         ld a, (cfg_carttype)
         ld (v_ctype), a
         or a
@@ -161,8 +164,11 @@ main_loop:
         or a
         call nz, glow
         call read_fire
-        jp nz, launch
-        call read_dir
+        jr z, ml_dir
+        ld a, (v_noyama)        ; sin Yamanooto los juegos no arrancarian
+        or a
+        jp z, launch
+ml_dir: call read_dir
         ld hl, v_lastdir
         cp (hl)
         jr z, ml_same
@@ -321,6 +327,9 @@ gs_2:   rrca
 yama_reset:
         ld a, 1
         ld (Y_ENAR), a
+        ld a, (Y_ENAR)          ; con los registros activos se leen: si no
+        xor 1                   ; vuelve el 1 no hay Yamanooto (p. ej. openMSX
+        ld (v_noyama), a        ; lo ha cargado como KonamiSCC)
         xor a
         ld (Y_CFGR), a
         ld (Y_OFFR), a
@@ -409,7 +418,11 @@ ss_1:   ld (v_colptr), hl
         ld de, NAMTBL+32
         call put_title
         ld hl, help_text
-        ld de, NAMTBL+23*32
+        ld a, (v_noyama)
+        or a
+        jr z, ss_2
+        ld hl, noyama_text
+ss_2:   ld de, NAMTBL+23*32
         call put_title
         jp ENASCR
 
@@ -874,6 +887,8 @@ pd_flag equ VARS+22
 
 help_text:
         db "  CURSORES:ELEGIR  ESPACIO:JUGAR "
+noyama_text:
+        db " FALTA EL MAPPER YAMANOOTO !!!   "
 txt_kb: db "KB", 0
 
 mapper_names:
