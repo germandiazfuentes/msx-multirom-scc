@@ -10,3 +10,12 @@ hasta 64KB se convierten al mapper Konami5.
 - Pruebas automáticas con openMSX: [`test/`](../test)
 
 No incluye ROMs de juegos, BIOS ni openMSX.
+
+## Licencia
+
+Copyright (C) 2026 Germán Díaz / MSX Calamar — https://msxcalamar.com
+
+Este programa es software libre: puedes redistribuirlo y/o modificarlo según los
+términos de la Licencia Pública General GNU (GPL) publicada por la Free Software
+Foundation, versión 2 o (a tu elección) cualquier versión posterior. Se distribuye
+SIN NINGUNA GARANTÍA. El texto completo está en el fichero `LICENSE`.

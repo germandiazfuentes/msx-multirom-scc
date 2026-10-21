@@ -1,3 +1,5 @@
+; Copyright (C) 2026 Germán Díaz / MSX Calamar
+; SPDX-License-Identifier: GPL-2.0-or-later
 ;===============================================================================
 ; MSX MultiROM - Menu (banco 0 del cartucho, 4000h-5FFFh)
 ;

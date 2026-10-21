@@ -1,3 +1,5 @@
+# Copyright (C) 2026 Germán Díaz / MSX Calamar
+# SPDX-License-Identifier: GPL-2.0-or-later
 """Analisis dinamico de un juego en openMSX.
 
 Ejecuta la ROM original (con su mapper) y registra:

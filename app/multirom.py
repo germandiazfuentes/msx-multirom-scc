@@ -1,3 +1,5 @@
+# Copyright (C) 2026 Germán Díaz / MSX Calamar
+# SPDX-License-Identifier: GPL-2.0-or-later
 """
 MSX MultiROM builder - nucleo (sin interfaz grafica).
 

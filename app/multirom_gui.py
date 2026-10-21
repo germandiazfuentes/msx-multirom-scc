@@ -1,3 +1,5 @@
+# Copyright (C) 2026 Germán Díaz / MSX Calamar
+# SPDX-License-Identifier: GPL-2.0-or-later
 """
 MSX MultiROM - interfaz grafica.
 
@@ -21,6 +23,7 @@ APP_NAME = "MSX MultiROM"
 APP_VERSION = "1.1"
 APP_AUTHOR = "Germán Díaz / MSX Calamar"
 APP_WEB = "https://msxcalamar.com"
+APP_LICENSE_URL = "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html"
 ICON_ICO = os.path.join(mr.APP_DIR, "data", "calamar.ico")
 ICON_PNG = os.path.join(mr.APP_DIR, "data", "calamar.png")
 CONFIG = os.path.join(os.path.expanduser("~"), ".msx_multirom.json")
@@ -203,7 +206,11 @@ class App(tk.Tk):
                          font=("Segoe UI", 10, "underline"))
         link.pack(anchor="w")
         link.bind("<Button-1>", lambda e: webbrowser.open(APP_WEB))
-        ttk.Label(frm, text="© 2026 Germán Díaz. Todos los derechos reservados.").pack(anchor="w", pady=(2, 10))
+        ttk.Label(frm, text="© 2026 Germán Díaz").pack(anchor="w", pady=(2, 0))
+        lic = ttk.Label(frm, text="Software libre: licencia GNU GPL versión 2 o posterior",
+                        foreground="#0060c0", cursor="hand2", font=("Segoe UI", 9, "underline"))
+        lic.pack(anchor="w", pady=(0, 10))
+        lic.bind("<Button-1>", lambda e: webbrowser.open(APP_LICENSE_URL))
         ttk.Label(frm, text="Créditos", font=("Segoe UI", 10, "bold")).pack(anchor="w")
         ttk.Label(frm, wraplength=420, justify="left", text=(
             "• openMSX: emulador usado para analizar y probar los juegos.\n"

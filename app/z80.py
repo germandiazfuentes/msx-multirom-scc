@@ -1,3 +1,5 @@
+# Copyright (C) 2026 Germán Díaz / MSX Calamar
+# SPDX-License-Identifier: GPL-2.0-or-later
 """Decodificador minimo de instrucciones Z80: longitud y tipo.
 
 Solo lo necesario para reubicar unas pocas instrucciones a una rutina en RAM
