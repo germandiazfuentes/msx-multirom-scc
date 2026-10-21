@@ -20,9 +20,10 @@ import analyze
 import multirom as mr
 
 APP_NAME = "MSX MultiROM"
-APP_VERSION = "1.1"
+APP_VERSION = "1.2"
 APP_AUTHOR = "Germán Díaz / MSX Calamar"
 APP_WEB = "https://msxcalamar.com"
+APP_MANUAL_URL = "https://github.com/germandiazfuentes/msx-multirom-scc/blob/main/docs/MANUAL.md"
 APP_LICENSE_URL = "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html"
 ICON_ICO = os.path.join(mr.APP_DIR, "data", "calamar.ico")
 ICON_PNG = os.path.join(mr.APP_DIR, "data", "calamar.png")
@@ -108,6 +109,7 @@ class App(tk.Tk):
         ttk.Label(top, text="Título del menú:").pack(side="left")
         ttk.Entry(top, textvariable=self.menu_title, width=32).pack(side="left", padx=4)
         ttk.Button(top, text="Acerca de...", command=self.about).pack(side="right")
+        ttk.Button(top, text="Manual", command=lambda: webbrowser.open(APP_MANUAL_URL)).pack(side="right", padx=4)
 
         # Lista de juegos + botones
         mid = ttk.Frame(self, padding=(10, 0))

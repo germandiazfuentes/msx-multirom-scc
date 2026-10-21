@@ -24,3 +24,4 @@ __pycache__/
 /multirom.ini
 /multirom.ini.old
 dist/
+docs/MANUAL.pdf

@@ -1,6 +1,6 @@
 # Manual de uso de MSX MultiROM
 
-**Versión 1.1** · Germán Díaz / MSX Calamar · [msxcalamar.com](https://msxcalamar.com)
+**Versión 1.2** · Germán Díaz / MSX Calamar · [msxcalamar.com](https://msxcalamar.com)
 
 MSX MultiROM junta varios juegos MSX en una sola ROM con un menú de selección,
 lista para grabarla en un cartucho **RBSC Multimapper** (512KB o 2MB) o
@@ -80,6 +80,7 @@ Si tienes Python 3 instalado, también puedes descargar el código y ejecutar
 | **Cartucho** | Tipo de cartucho donde vas a grabar la ROM. Tiene que coincidir con el cartucho real. |
 | **Tamaño** | Tamaño de la ROM: 512KB o 2MB para el RBSC; 512KB, 2MB, 4MB u 8MB para el Yamanooto. Usa el tamaño de tu cartucho. |
 | **Título del menú** | Texto de la cabecera del menú en el MSX (hasta 32 caracteres). |
+| **Manual** | Abre este manual en el navegador. |
 | **Acerca de...** | Versión, autor, créditos y licencia. |
 
 ### Lista de juegos
@@ -96,6 +97,7 @@ Si tienes Python 3 instalado, también puedes descargar el código y ejecutar
 | **Estado** | `OK` o los avisos de ese juego (ver [sección 11](#11-mensajes-y-avisos)). |
 
 Colores de las filas:
+
 - **Negro:** todo correcto.
 - **Naranja:** hay un aviso que conviene revisar.
 - **Rojo:** el juego no se puede usar (formato no soportado o fichero dañado).
@@ -163,6 +165,7 @@ Esos juegos no se incluyen en la ROM.
 ![Juegos que no caben](img/no_cabe.png)
 
 Soluciones:
+
 - Quita algún juego grande o cambia el orden: los juegos se colocan por orden
   de la lista y aprovechando los huecos.
 - Elige un tamaño mayor si tu cartucho lo admite.
@@ -199,6 +202,7 @@ ejecutan desde RAM. Además, las rutinas de adaptación necesitan una zona de RA
 que el juego no use.
 
 El análisis **ejecuta cada juego original en openMSX** y apunta:
+
 - todos los cambios de banco que hace realmente;
 - qué zonas de RAM deja libres.
 
@@ -206,6 +210,7 @@ Con esa información el programa adapta los cambios de banco que faltaban y
 coloca las rutinas en una zona segura. En la columna Rutinas aparece **RAM auto**.
 
 **Cuándo usarlo:**
+
 - **Cartucho RBSC:** recomendado siempre. Este cartucho necesita adaptar todos
   los cambios de banco, y algunos juegos (por ejemplo Hydlide 3) solo funcionan
   con el análisis.
@@ -351,6 +356,7 @@ no arrancarían. Usa la ROM en un Yamanooto, o genérala para el cartucho RBSC.
 ## 12. Solución de problemas
 
 **Un juego no arranca o se cuelga desde el menú.**
+
 1. Comprueba que el juego original funciona en esa máquina, cargándolo solo
    en openMSX. Algunos juegos no funcionan en ciertos modelos. Por ejemplo,
    River Raid no funciona en el Sony HB-F500P ni siquiera solo.
