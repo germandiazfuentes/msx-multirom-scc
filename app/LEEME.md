@@ -4,6 +4,8 @@ Genera una ROM de 512KB, 2MB, 4MB u 8MB con un menú de selección y varios
 juegos. Las ROMs con mapper ASCII8, ASCII16, Konami4, Konami5 y "genérico"
 8K/16K se convierten automáticamente al mapper Konami5 del cartucho.
 
+Manual de uso completo, con capturas: [`docs/MANUAL.md`](../docs/MANUAL.md).
+
 ## Uso
 
 1. Ejecuta `MultiROM.exe` (no necesita Python), o `MultiROM.bat` / `python multirom_gui.py`

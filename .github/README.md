@@ -5,6 +5,7 @@ con un menú y varios juegos MSX, para los RBSC Multimapper (512KB/2MB) y el
 Yamanooto SCC (8MB). Las ROMs ASCII8, ASCII16, Konami4, Konami5 y lineales de
 hasta 64KB se convierten al mapper Konami5.
 
+- **[Manual de uso](../docs/MANUAL.md)** · [Descargar MultiROM.exe](https://github.com/germandiazfuentes/msx-multirom-scc/releases/latest)
 - Programa y documentación: [`app/`](../app) — ver [`app/LEEME.md`](../app/LEEME.md)
 - Menú MSX (ensamblador, pasmo): [`app/msx/menu.asm`](../app/msx/menu.asm)
 - Pruebas automáticas con openMSX: [`test/`](../test)
