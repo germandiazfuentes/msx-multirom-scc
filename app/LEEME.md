@@ -6,7 +6,10 @@ juegos. Las ROMs con mapper ASCII8, ASCII16, Konami4, Konami5 y "genérico"
 
 ## Uso
 
-1. Ejecuta `MultiROM.bat` (o `python multirom_gui.py`). Necesita Python 3 (incluye Tkinter).
+1. Ejecuta `MultiROM.exe` (no necesita Python), o `MultiROM.bat` / `python multirom_gui.py`
+   con Python 3 instalado. Para usar los botones de openMSX, pon la carpeta `openmsx`
+   junto al `.exe` o elígela con **openMSX...**. El `.exe` se crea con `crear_exe.bat`
+   (requiere `pip install pyinstaller`) y queda en `dist\`.
 2. Elige el **cartucho** y el **tamaño**.
 3. **Añadir ROMs...** o **Añadir carpeta...** (acepta `.rom` y `.zip`).
    - Doble clic en el **título** para cambiar el nombre que sale en el menú (30 caracteres).

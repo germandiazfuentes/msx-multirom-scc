@@ -44,6 +44,10 @@ def find_openmsx():
     cands = [os.path.join(mr.APP_DIR, "..", "tools", "openmsx", "openmsx.exe"),
              os.path.join(mr.APP_DIR, "openmsx", "openmsx.exe"),
              r"C:\Program Files\openMSX\openmsx.exe"]
+    if getattr(sys, "frozen", False):   # .exe: buscar junto al ejecutable
+        exe_dir = os.path.dirname(sys.executable)
+        cands[:0] = [os.path.join(exe_dir, "openmsx", "openmsx.exe"),
+                     os.path.join(exe_dir, "..", "tools", "openmsx", "openmsx.exe")]
     for c in cands:
         if os.path.exists(c):
             return os.path.normpath(c)
@@ -626,8 +630,9 @@ class App(tk.Tk):
 
 
 if __name__ == "__main__":
-    os.chdir(mr.APP_DIR)
+    args = [os.path.abspath(a) for a in sys.argv[1:]]
+    os.chdir(os.path.dirname(sys.executable) if getattr(sys, "frozen", False) else mr.APP_DIR)
     app = App()
-    for a in sys.argv[1:]:
+    for a in args:
         app._add_paths([a])
     app.mainloop()
