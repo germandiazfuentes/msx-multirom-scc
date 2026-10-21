@@ -19,6 +19,7 @@ def one(f, secs=42):
     g = mr.Game(f)
     if g.error:
         return g.title, "error"
+    os.makedirs("romx", exist_ok=True)
     rom = os.path.abspath("romx/%s.rom" % g.sha1[:10])
     with open(rom, "wb") as fh:
         fh.write(g.raw)

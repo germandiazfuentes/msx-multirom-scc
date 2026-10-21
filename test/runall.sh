@@ -2,6 +2,7 @@
 # Bateria completa en maquinas reales: ./runall.sh
 cd "$(dirname "$0")"
 export PYTHONIOENCODING=utf-8
+mkdir -p out/real
 run() { # maquina etiquetas...
   M=$1; shift
   for c in k5:2048 yama:8192; do
