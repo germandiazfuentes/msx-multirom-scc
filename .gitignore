@@ -1,0 +1,25 @@
+# ROMs de juegos y BIOS (con copyright) y herramientas de terceros
+*.rom
+*.zip
+roms/
+roms2/
+systemroms/
+tools/
+pasmo.exe
+# Salidas de las pruebas
+test/out/
+test/romx/
+__pycache__/
+# Version anterior (PHP)
+/ANALISIS_ROM_REAL.md
+/CAMBIOS_v1.1.md
+/MultiROM_Generator/
+/NEWS
+/README
+/README.md
+/build_multirom.php
+/loader.asm
+/loader.bin
+/multirom.bin
+/multirom.ini
+/multirom.ini.old
