@@ -177,3 +177,4 @@ C-BIOS ni siquiera solos, así que no se pudieron comprobar.
 - `msx/menu.asm`: menú del MSX (Z80). `ensamblar_menu.bat` lo reensambla con pasmo.
 - `data/romdb.tsv.gz`: tipos de mapper por SHA1, extraídos de la base de datos
   de openMSX (softwaredb.xml, GPL).
+- `data/calamar.ico`, `data/calamar.png`: icono de MSX Calamar (programa y ventana "Acerca de").

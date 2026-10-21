@@ -11,11 +11,18 @@ import sys
 import tempfile
 import threading
 import tkinter as tk
+import webbrowser
 from tkinter import filedialog, messagebox, ttk
 
 import analyze
 import multirom as mr
 
+APP_NAME = "MSX MultiROM"
+APP_VERSION = "1.1"
+APP_AUTHOR = "Germán Díaz / MSX Calamar"
+APP_WEB = "https://msxcalamar.com"
+ICON_ICO = os.path.join(mr.APP_DIR, "data", "calamar.ico")
+ICON_PNG = os.path.join(mr.APP_DIR, "data", "calamar.png")
 CONFIG = os.path.join(os.path.expanduser("~"), ".msx_multirom.json")
 # Maquinas con BIOS real para el analisis en varias maquinas (si openMSX tiene sus ROMs)
 MULTI_MACHINES = ["Sony_HB-75P", "Sony_HB-F1XD", "Panasonic_FS-A1WX", "Panasonic_FS-A1GT"]
@@ -58,6 +65,10 @@ class App(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("MSX MultiROM - Konami5 / Yamanooto")
+        try:
+            self.iconbitmap(default=ICON_ICO)
+        except tk.TclError:
+            pass
         self.geometry("980x680")
         self.minsize(820, 560)
         self.cfg = load_config()
@@ -93,6 +104,7 @@ class App(tk.Tk):
         self.size_cb.bind("<<ComboboxSelected>>", lambda e: self.refresh())
         ttk.Label(top, text="Título del menú:").pack(side="left")
         ttk.Entry(top, textvariable=self.menu_title, width=32).pack(side="left", padx=4)
+        ttk.Button(top, text="Acerca de...", command=self.about).pack(side="right")
 
         # Lista de juegos + botones
         mid = ttk.Frame(self, padding=(10, 0))
@@ -161,6 +173,54 @@ class App(tk.Tk):
         logf.pack(fill="both", padx=10, pady=(0, 10))
         self.log = tk.Text(logf, height=7, wrap="word", font=("Consolas", 9), state="disabled")
         self.log.pack(fill="both", expand=True)
+
+    def about(self):
+        """Ventana 'Acerca de': autor, version, web y creditos."""
+        win = tk.Toplevel(self)
+        win.title("Acerca de " + APP_NAME)
+        win.resizable(False, False)
+        win.transient(self)
+        frm = ttk.Frame(win, padding=(20, 16))
+        frm.pack(fill="both")
+        head = ttk.Frame(frm)
+        head.pack(fill="x")
+        try:
+            win.logo = tk.PhotoImage(file=ICON_PNG)
+            ttk.Label(head, image=win.logo).pack(side="left", padx=(0, 14))
+        except tk.TclError:
+            pass
+        names = ttk.Frame(head)
+        names.pack(side="left")
+        ttk.Label(names, text=APP_NAME, font=("Segoe UI", 16, "bold")).pack(anchor="w")
+        ttk.Label(names, text="Versión " + APP_VERSION).pack(anchor="w")
+        ttk.Label(frm, wraplength=420, justify="left", text=(
+            "Generador de ROMs multijuego para MSX, con menú de selección, para los "
+            "cartuchos RBSC Multimapper (512KB / 2MB) y Yamanooto SCC (8MB). Convierte "
+            "juegos ASCII8, ASCII16, Konami4, Konami5 y ROMs sin mapper al mapper Konami5 (SCC).")
+        ).pack(anchor="w", pady=(12, 8))
+        ttk.Label(frm, text="Creado por " + APP_AUTHOR, font=("Segoe UI", 10, "bold")).pack(anchor="w")
+        link = ttk.Label(frm, text=APP_WEB.split("//")[1], foreground="#0060c0", cursor="hand2",
+                         font=("Segoe UI", 10, "underline"))
+        link.pack(anchor="w")
+        link.bind("<Button-1>", lambda e: webbrowser.open(APP_WEB))
+        ttk.Label(frm, text="© 2026 Germán Díaz. Todos los derechos reservados.").pack(anchor="w", pady=(2, 10))
+        ttk.Label(frm, text="Créditos", font=("Segoe UI", 10, "bold")).pack(anchor="w")
+        ttk.Label(frm, wraplength=420, justify="left", text=(
+            "• openMSX: emulador usado para analizar y probar los juegos.\n"
+            "• Base de datos de ROMs de openMSX (softwaredb, GPL) para detectar los mappers.\n"
+            "• Pasmo: ensamblador del menú del MSX.\n"
+            "• Python, Tkinter y PyInstaller.")).pack(anchor="w", pady=(2, 10))
+        ttk.Label(frm, wraplength=420, justify="left", foreground="#606060", text=(
+            "Usa solo ROMs de las que tengas una copia legal. Los juegos y marcas "
+            "mencionados pertenecen a sus respectivos propietarios. Este programa se "
+            "ofrece tal cual, sin garantía de ningún tipo.")).pack(anchor="w")
+        ttk.Button(frm, text="Cerrar", command=win.destroy).pack(anchor="e", pady=(14, 0))
+        win.bind("<Escape>", lambda e: win.destroy())
+        win.update_idletasks()
+        x = self.winfo_rootx() + (self.winfo_width() - win.winfo_width()) // 2
+        y = self.winfo_rooty() + (self.winfo_height() - win.winfo_height()) // 3
+        win.geometry("+%d+%d" % (max(x, 0), max(y, 0)))
+        win.grab_set()
 
     def _machines(self):
         if not self.openmsx:
